@@ -1,0 +1,18 @@
+COMMOM: &commom
+  APP_NAME: ze_delivery
+  PORT: 500
+
+  #Database
+  MONGO_URI: mongodb://localhost:27017/ze_delivery
+  MONGO_USERNAME: mydb
+  MONGO_PASSWORD: password
+
+DEVELOPMENT: &development
+  <<: *commom
+  DEBUG: True
+
+STAGING: &staging
+  <<: *commom
+
+PRODUCTION: &production
+  <<: *commom
