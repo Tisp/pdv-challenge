@@ -7,7 +7,7 @@ from pymongo import MongoClient
 from mongoframes import Frame
 
 """ This need because have to import Pdv class when run as cli """
-base_dir = os.path.abspath(os.path.dirname(__file__))
+base_dir = os.path.abspath(os.path.dirname(__file__)).replace('/migrate', '')
 sys.path.append(base_dir)
 
 from model.pdv import Pdv
@@ -27,12 +27,13 @@ if __name__ == '__main__':
 
     try:
         mongo = MongoClient(conf.MONGO_URI)
+        Frame._client = mongo
+        Pdv.insert_many(get_migrate_data()['pdvs'])
+        Pdv.get_collection().create_index([('id', pymongo.ASCENDING)], unique=True)
+        Pdv.get_collection().create_index([('coverageArea', pymongo.GEOSPHERE)])
     except Exception as e:
         print(e)
         sys.exit(1)
 
-    Frame._client = mongo
-    Pdv.insert_many(get_migrate_data()['pdvs'])
-    Pdv.get_collection().create_index([('id', pymongo.ASCENDING)], unique=True)
-    Pdv.get_collection().create_index([('coverageArea', pymongo.GEOSPHERE)])
+
 

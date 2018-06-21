@@ -6,7 +6,6 @@ name = "pypi"
 [packages]
 flask = "*"
 mongoframes = "*"
-pyaml = "*"
 jsonschema = "*"
 
 [dev-packages]
