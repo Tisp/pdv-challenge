@@ -1,6 +1,6 @@
 from mongoframes import *
 from .geometry_type import GeometryType
-from jsonschema import *
+from jsonschema import validate, ValidationError
 
 
 class Pdv(Frame):

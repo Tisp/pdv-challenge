@@ -27,7 +27,6 @@ if __name__ == '__main__':
 
     try:
         mongo = MongoClient(conf.MONGO_URI)
-        mongo.drop_database(conf.MONGO_DATABASE)
     except Exception as e:
         print(e)
         sys.exit(1)
