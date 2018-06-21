@@ -1,6 +1,5 @@
 from mongoframes import *
 from .geometry_type import GeometryType
-from jsonschema import validate, ValidationError
 
 
 class Pdv(Frame):
@@ -95,6 +94,9 @@ class Validation(object):
 
     @staticmethod
     def validate(pdv):
+        #To avoid erros on mac os
+        from jsonschema import validate, ValidationError
+
         try:
             validate(pdv, Validation._schema)
             return True, None

@@ -17,7 +17,7 @@ class PdvController(Controller):
         if isinstance(frame, Frame):
             return jsonify(frame.to_json_type())
 
-        return False
+        return PdvController.json_response('Error', 500)
 
     @staticmethod
     def get_near_pdv(lat, lng):
@@ -51,9 +51,11 @@ class PdvController(Controller):
         status, message = Validation.validate(payload)
         if not status:
             return PdvController.json_response(message, 400)
-
-        Pdv(payload).insert()
-        return PdvController.json_response('created', 201)
+        try:
+            Pdv(payload).insert()
+            return PdvController.json_response('created', 201)
+        except Exception as e:
+            return PdvController.json_response(str(e), 400)
 
 
 
