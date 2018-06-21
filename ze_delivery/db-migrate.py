@@ -1,6 +1,5 @@
 import os
 import sys
-import yaml
 import json
 import pymongo
 
@@ -12,21 +11,7 @@ base_dir = os.path.abspath(os.path.dirname(__file__))
 sys.path.append(base_dir)
 
 from model.pdv import Pdv
-
-def get_config():
-
-    conf_file = '{}/config/config.yml'.format(base_dir)
-
-    with open(conf_file, 'r') as cf:
-        try:
-            config = yaml.load(cf)
-        except yaml.YAMLError as e:
-            print(e)
-            sys.exit(1)
-
-    env = 'DEVELOPMENT' if 'ENV' not in os.environ else os.environ['ENV'].upper()
-
-    return config[env]
+from settings import config
 
 
 def get_migrate_data():
@@ -36,11 +21,13 @@ def get_migrate_data():
 
 
 if __name__ == '__main__':
-    config = get_config()
+    conf = config.development
+    if 'FLASK_ENV' in os.environ and os.environ['FLASK_ENV'] == 'production':
+        conf = config.production
 
     try:
-        mongo = MongoClient(config['MONGO_URI'])
-        print(config['MONGO_URI'])
+        mongo = MongoClient(conf.MONGO_URI)
+        mongo.drop_database(conf.MONGO_DATABASE)
     except Exception as e:
         print(e)
         sys.exit(1)

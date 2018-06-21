@@ -1,6 +1,5 @@
 from mongoframes import *
 from .geometry_type import GeometryType
-import pymongo
 
 class Pdv(Frame):
 
