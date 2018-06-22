@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  web:
+    restart: always
+    build: .
+    ports:
+      - "5000:5000"
+    command: python3 -m flask run -h 0.0.0.0
+    depends_on:
+      - mongo
+    links:
+      - mongo
+
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+
