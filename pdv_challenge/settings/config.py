@@ -3,7 +3,7 @@ class Config(object):
     PORT = '5000'
 
     # Database
-    MONGO_SERVER = 'mongo' # 127.0.0.1
+    MONGO_SERVER = '127.0.0.1'
     MONGO_DATABASE = 'pdv_challenge'
     MONGO_URI = 'mongodb://{}:27017/{}'.format(MONGO_SERVER, MONGO_DATABASE)
     MONGO_USERNAME = 'ze'
