@@ -30,6 +30,7 @@ if __name__ == '__main__':
         Frame._client = mongo
         Pdv.insert_many(get_migrate_data()['pdvs'])
         Pdv.get_collection().create_index([('id', pymongo.ASCENDING)], unique=True)
+        Pdv.get_collection().create_index([('document', pymongo.ASCENDING)], unique=True)
         Pdv.get_collection().create_index([('coverageArea', pymongo.GEOSPHERE)])
     except Exception as e:
         print(e)

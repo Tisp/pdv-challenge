@@ -1,11 +1,11 @@
 from flask import Flask, request
 from pymongo import MongoClient
 from mongoframes import *
-from ze_delivery.http.controller import PdvController
+from pdv_challenge.http.controller import PdvController
 
 ## Flask App ##
 app = Flask(__name__)
-app.config.from_object('ze_delivery.settings.config.{}'.format(app.config['ENV']))
+app.config.from_object('pdv_challenge.settings.config.{}'.format(app.config['ENV']))
 
 ## Mongo Conection ##
 app.mongo = MongoClient(app.config['MONGO_URI'])

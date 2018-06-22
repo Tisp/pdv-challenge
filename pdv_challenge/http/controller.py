@@ -1,6 +1,6 @@
 from flask import jsonify
 from mongoframes import *
-from ze_delivery.model.pdv import Pdv, Validation
+from pdv_challenge.model.pdv import Pdv, Validation
 
 
 class Controller(object):
