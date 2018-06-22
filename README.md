@@ -21,7 +21,17 @@ Este repositório contém uma resolução para o teste da [ZXVentures](https://g
     ```
     **OBS: Veja a confiração de conexão com MongoDB em (./pdv_challenge/settings/config.py)**
     
-3. Inicie o servidor:
+3. Adicione as variáveis de ambiente
+    ```shell
+    export FLASK_APP=./pdv_challenge/http/index.py
+    ```
+    
+    Por padrão o servidor subirá em modo de produção, mude a variável de ambinete **FLASK_ENV** para trocar para desenvolvimento
+    ```shell
+    export FLASK_ENV=development
+    ```
+    
+4. Inicie o servidor:
     ```shell
     python -m flask run -h 0.0.0.0
     ```
