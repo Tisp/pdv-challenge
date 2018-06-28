@@ -31,7 +31,5 @@ def get_near_pdv():
     lat = request.args.get('lat', default=None, type=float)
     lng = request.args.get('lng', default=None, type=float)
 
-    return PdvController.get_near_pdv(lat, lng)
-
-
+    return PdvController.get_intersects_or_near_pdv(lat, lng)
 

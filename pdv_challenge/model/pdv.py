@@ -102,4 +102,3 @@ class Validation(object):
             return True, None
         except ValidationError as e:
             return False, str(e).split("\n")[0]
-

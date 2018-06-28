@@ -7,4 +7,3 @@ class GeometryType(SubFrame):
         'type',
         'coordinates'
     }
-
