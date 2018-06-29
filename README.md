@@ -43,7 +43,7 @@ Este repositório contém uma resolução para o teste da [ZXVentures](https://g
       curl -X GET http://localhost:5000/pdv/<ID>
       ```      
       
-  * Buscar PDV mais próximo por latitude e longitude
+  * Buscar PDV mais próximo ou dentro por latitude e longitude
       ```shell
       curl -X GET 'http://localhost:5000/search?lat=<LAT>&lng=<LON>
       ```
